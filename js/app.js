@@ -1,31 +1,5 @@
 'use strict';
-/*
-1. Stores the min/max hourly customers, and the average cookies per customer, in object properties [1st DONE]
-2. Uses a method of that object to generate a random number of customers per hour. Objects/Math/random [generator DONE]
-3. Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
-4. Store the results for each location in a separate array… perhaps as a property of the object representing that location
-5. Display the values of each array as unordered lists in the browser
-6. Calculating the sum of these hourly totals; your output for each location should look like this:
 
-**Seattle**
-
-6am: 16 cookies
-7am: 20 cookies
-8am: 35 cookies
-9am: 48 cookies
-10am: 56 cookies
-11am: 77 cookies
-12pm: 93 cookies
-1pm: 144 cookies
-2pm: 119 cookies
-3pm: 84 cookies
-4pm: 61 cookies
-5pm: 23 cookies
-6pm: 42 cookies
-7pm: 57 cookies
-Total: 875 cookies
-
-*/
 
 var hours = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
@@ -35,6 +9,71 @@ function random(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+
+function Store(storeName, minCust, maxCust, avgCookieSale){
+  this.storeName = storeName;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookieSale = avgCookieSale;
+  this.cookiesEachHour = this.setCookEachHour();
+  this.customersEachHour = this.setCustomersEachHour();
+  this.totalDailyCookies = 0;
+}
+// Calculate number of customers at each hour 
+Store.prototype.setCustomersEachHour = function(){
+    for (var i=0; i < hours.length; i++){
+      this.customersEachHour.push(random(this.minCust,this.maxCust));
+
+// Calculate number of cookies sold at each hour
+Store.prototype.setCookEachHour = function(){
+  this.setCustomersEachHour();
+  var i;
+  var oneHour;
+  for (i = 0; i < hours.length; i++) {
+    // push to array a random customer at the hour
+    oneHour = Math.ceil(this.customersEachHour[i] * this.avgCookieSale);
+    this.cookiesEachHour.push(oneHour);
+    this.totalDailyCookies += oneHour;
+  } // close multiply array for
+};
+
+
+Store.prototype.render = function(){
+    this.caclulateCalcCookEachHour();
+    var listPara = document.getElementById('list');
+    var theUl = document.createElement('ul');
+    listPara.appendChild(theUl);
+    //   console.log(listPara);
+
+    for (var i = 0; i < hours.length; i++) {
+      var liEl = document.createElement('li');
+      liEl.textContent = hours[i] + ': ' + this.cookiesEachHour[i] + ' cookies.';
+      theUl.appendChild(liEl);
+    }
+    liEl = document.createElement('b');
+    liEl.textContent = 'Total: ' + this.totalDailyCookies + ' cookies.';
+    theUl.appendChild(liEl); 
+};
+
+var seattleStore = new Store('Seattle',23 ,65 ,6.3);
+console.log(seattleStore);
+
+
+
+
+
+var allStores = [storeSeattle, storeTokyo, storeDubai, storeParis, storeLima];
+function renderAllStores(){
+  for(var i = 0; i < allStores.length; i++){
+    allStores[i].render();
+  }
+}
+renderAllStores();
+
+
+
+///////// Lab 06 below /////////
 
 // Object: Seattle Store
 var storeSeattle ={
