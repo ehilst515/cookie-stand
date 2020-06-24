@@ -2,7 +2,7 @@
 
 
 ///////// Lab 06 below /////////
-var hours = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+var hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
 // Random gen taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function random(min, max) {
@@ -269,11 +269,14 @@ document.getElementById('maxCustomersLima').innerHTML = storeLima.maxCust;
 document.getElementById('avgCookiesLima').innerHTML = storeLima.avgCookieSale;
 ///
 
-// Render store sales at each hour
-var allStores = [storeSeattle, storeTokyo, storeDubai, storeParis, storeLima];
-function renderAllShops(){
-  for(var i = 0; i < allStores.length; i++){
-    allStores[i].render();
-  }
-}
-renderAllShops();
+/*
+Uncomment below to display data by non-proto method
+*/
+// // Render store sales at each hour
+// var allStores = [storeSeattle, storeTokyo, storeDubai, storeParis, storeLima];
+// function renderAllShops(){
+//   for(var i = 0; i < allStores.length; i++){
+//     allStores[i].render();
+//   }
+// }
+// // renderAllShops();
