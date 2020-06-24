@@ -14,13 +14,14 @@
         <main>
             <h2>Sales Info</h2>
             <p>Hours of operation: 6:00 AM to 8:00 PM for all locations</p>
+            <!-- Render from js/appNonProto.js -->
             <!-- Start Seattle -->
             <h3>Store One: Seattle</h3>
                 <ul>
                     <li>Minimum number of customers per hour:</li><p id="minCustomers"></p>
                     <li>Maximum number of customers per hour:</li><p id="maxCustomers"></p>    
                     <li>Average number of cookies purchased per customer:</li><p id="avgCookies"></p>
-                    <li>Sales per hour:</li><p id="custPerHour"></p>
+                    <!-- <li>Sales per hour:</li><p id="custPerHour"></p> -->
                 </ul>
                 <ul id='list'></ul>
             <!-- Stop Seattle -->
@@ -30,7 +31,7 @@
                     <li>Minimum number of customers per hour:</li><p id="minCustomersTokyo"></p>
                     <li>Maximum number of customers per hour:</li><p id="maxCustomersTokyo"></p>    
                     <li>Average number of cookies purchased per customer:</li><p id="avgCookiesTokyo"></p>
-                    <li>Sales per hour:</li><p id="custPerHourTokyo"></p>
+                    <!-- <li>Sales per hour:</li><p id="custPerHourTokyo"></p> -->
                 </ul>
                 <ul id='listTokyo'></ul>
             <!-- Stop Tokyo -->
@@ -40,7 +41,7 @@
                 <li>Minimum number of customers per hour:</li><p id="minCustomersDubai"></p>
                 <li>Maximum number of customers per hour:</li><p id="maxCustomersDubai"></p>    
                 <li>Average number of cookies purchased per customer:</li><p id="avgCookiesDubai"></p>
-                <li>Sales per hour:</li><p id="custPerHourDubai"></p>
+                <!-- <li>Sales per hour:</li><p id="custPerHourDubai"></p> -->
             </ul>
             <ul id='listDubai'></ul>
             <!-- Stop Dubai -->
@@ -50,7 +51,7 @@
                 <li>Minimum number of customers per hour:</li><p id="minCustomersParis"></p>
                 <li>Maximum number of customers per hour:</li><p id="maxCustomersParis"></p>    
                 <li>Average number of cookies purchased per customer:</li><p id="avgCookiesParis"></p>
-                <li>Sales per hour:</li><p id="custPerHourParis"></p>
+                <!-- <li>Sales per hour:</li><p id="custPerHourParis"></p> -->
             </ul>
             <ul id='listParis'></ul>
             <!-- Stop Paris -->
@@ -60,10 +61,11 @@
                 <li>Minimum number of customers per hour:</li><p id="minCustomersLima"></p>
                 <li>Maximum number of customers per hour:</li><p id="maxCustomersLima"></p>    
                 <li>Average number of cookies purchased per customer:</li><p id="avgCookiesLima"></p>
-                <li>Sales per hour:</li><p id="custPerHourLima"></p>
+                <!-- <li>Sales per hour:</li><p id="custPerHourLima"></p> -->
             </ul>
             <ul id='listLima'></ul>
             <!-- Stop Lima -->
+            <!-- Render table from js/app.js -->
             <table>
                 <tbody id='dataTable'>
                     <tr>
@@ -89,6 +91,7 @@
         <footer>
             <a href="index.html" style="font-size: xx-large; text-decoration: none;">Store Page</a>
         </footer>
+        <script src="js/appNonProto.js" async defer></script>
         <script src="js/app.js" async defer></script>
     </body>
 </html>
