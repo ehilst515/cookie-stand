@@ -40,3 +40,23 @@ address p{
     padding: 0;
     line-height: 60%;
 }
+
+footer{
+    margin: 300px;
+}
+
+table, th, td{
+    border-collapse: collapse;
+    border: solid black;
+    margin: 0;
+}
+
+th{
+    height: 20px;
+    background-color: rgba(250, 128, 114, 0.5);
+}
+
+th, td {
+    padding: 5px;
+    text-align: center;
+  }

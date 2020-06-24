@@ -11,7 +11,6 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
 function Store(storeName, minCust, maxCust, avgCookieSale){
   this.storeName = storeName;
   this.minCust = minCust;
@@ -43,32 +42,14 @@ Store.prototype.setCookEachHour = function(){
   } // close multiply array for
 };// close protofunction
 
-
-Store.prototype.render = function(){
-  this.setCookEachHour();
-  var listPara = document.getElementById('list');
-  var theUl = document.createElement('ul');
-  listPara.appendChild(theUl);
-  //   console.log(listPara);
-
-  for (var i = 0; i < hours.length; i++) {
-    var liEl = document.createElement('li');
-    liEl.textContent = hours[i] + ': ' + this.cookiesEachHour[i] + ' cookies.';
-    theUl.appendChild(liEl);
-  }//close for
-  liEl = document.createElement('b');
-  liEl.textContent = 'Total: ' + this.totalDailyCookies + ' cookies.';
-  theUl.appendChild(liEl);
-};//close proto function
-
 //Set store values with var and new
-var seattleStore = new Store('Seattle',23 ,65 ,6.3);
+var seattleStore = new Store('Seattle', 23, 65, 6.3);
 console.log(seattleStore);
 
-var tokyoStore = new Store('Tokyo',3 ,24 ,1.2);
+var tokyoStore = new Store('Tokyo', 3, 24, 1.2);
 console.log(tokyoStore);
 
-var dubaiStore = new Store('Dubai',11, 38, 3.7);
+var dubaiStore = new Store('Dubai',11 , 38, 3.7);
 console.log(dubaiStore);
 
 var parisStore = new Store('Paris', 20, 38, 2.3);
@@ -77,11 +58,33 @@ console.log(parisStore);
 var limaStore = new Store('Lima', 2, 16, 4.6);
 console.log(limaStore);
 
-// render all stores
-var allStores = [seattleStore,tokyoStore,dubaiStore, parisStore, limaStore];
+///
 
+//Rendering
+
+
+Store.prototype.render = function(){
+  var cookieTable = document.getElementById('dataTable');
+
+  var dataRow = document.createElement('tr');
+  var nameCell = document.createElement('td');
+  nameCell.textContent = this.storeName;
+  dataRow.appendChild(nameCell);
+
+  for (var i = 0; i < hours.length; i++){
+    var dataCell = document.createElement('td');
+    dataCell.textContent = this.cookiesEachHour[i];
+    dataRow.appendChild(dataCell);
+
+    cookieTable.appendChild(dataRow);
+  }// close for loop
+};// close proto function
+
+
+
+var allStores = [seattleStore,tokyoStore,dubaiStore, parisStore, limaStore];
 function renderAllStores(){
-  for(var i = 0; i < allStores; i++){
+  for(var i = 0; i < allStores.length; i++){
     allStores[i].render();
   }//close for
 }//close function
