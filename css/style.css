@@ -75,3 +75,7 @@ th, td {
     text-align: center;
     background-color: white;
   }
+
+  li p{
+      margin: 0 !important;
+  }
