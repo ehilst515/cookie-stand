@@ -79,3 +79,6 @@ th, td {
   li p{
       margin: 0 !important;
   }
+form{
+    margin: 40px;
+}

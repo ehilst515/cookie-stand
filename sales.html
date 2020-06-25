@@ -14,7 +14,39 @@
         <main>
             <h2>Sales Info</h2>
             <p>Hours of operation: 6:00 AM to 8:00 PM for all locations</p>
-            <!-- Render from js/appNonProto.js -->
+            <!-- Form to add store -->
+            <form id='enterStore'>
+                <fieldset>
+                    <legend>Add new Store</legend>
+                    <!-- Name -->
+                    <label for="enterName">Name</label>
+                    <input id="enterName" type="text" required>
+                    <br>
+                    <br>
+                    <!-- Minimum customers -->
+                    <label for="enterMinCust">Min. Cust.</label>
+                    <input id="enterMinCust" type="text" required>
+                    <br>
+                    <br>
+                    <!-- Maximum customers -->
+                    <label for="enterMaxCust">Max. Cust.</label>
+                    <input id="enterMaxCust" type="text" required>
+                    <br>
+                    <br>
+                    <!-- Avg cookies per hour -->
+                    <label for="enterAvgCookies">Avg. Cookies</label>
+                    <input id="enterAvgCookies" type="text" required>
+                    <br>
+                    <br>
+                </fieldset>
+                <button type="reset">Reset</button>
+                <button type="submit">Add Store</button>
+
+
+            </form>
+
+
+            <!-- Render below from js/appNonProto.js -->
             <!-- Start Seattle -->
             <h3>Store One: Seattle</h3>
                 <ul>
@@ -65,7 +97,7 @@
             </ul>
             <ul id='listLima'></ul>
             <!-- Stop Lima -->
-            <!-- Render table from js/app.js -->
+            <!-- Render below table from js/app.js -->
             <table>
                 <tbody id='dataTable'>
                     <tr>
