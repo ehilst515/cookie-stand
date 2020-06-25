@@ -1,5 +1,9 @@
 'use strict';
 
+/*
+Lab 08 below
+*/
+
 
 var hours = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
@@ -96,3 +100,36 @@ function renderAllStores(){
 }//close function
 
 renderAllStores();
+
+/*
+Lab 09 below
+*/
+
+//Display new store
+function handleFormSubmitted(event){
+  event.preventDefault();
+
+  var nameInput = document.getElementById('enterName');
+  var nameValue = nameInput.value;
+
+  var minInput = document.getElementById('enterMinCust');
+  var minValue = minInput.value;
+
+  var maxInput = document.getElementById('enterMaxCust');
+  var maxValue = maxInput.value;
+
+  var avgInput = document.getElementById('enterAvgCookies');
+  var avgValue = avgInput.value;
+
+  var newStore = new Store(nameValue, minValue, maxValue, avgValue);
+
+  newStore.render(event);
+
+  var form = document.getElementById('enterStore');
+  form.reset();
+
+}
+
+// Event listener
+var formElement = document.getElementById('enterStore');
+formElement.addEventListener('submit', handleFormSubmitted);
