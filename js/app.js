@@ -1,27 +1,5 @@
 'use strict';
 
-//Display new store
-function handleFormSubmitted(event){
-  var nameInput = document.getElementById('enterName');
-  var nameValue = nameInput.value;
-
-  var minInput = document.getElementById('enterMinCust');
-  var minValue = minInput.value;
-
-  var maxInput = document.getElementById('enterMaxCust');
-  var maxValue = maxInput.value;
-
-  var avgInput = document.getElementById('enterAvgCookies');
-  var avgValue = avgInput.value;
-
-}
-
-// Event listener
-var formElement = document.getElementById('enterStore');
-formElement.addEventListener('submit', handleFormSubmitted());
-
-
-
 /*
 Lab 08 below
 */
@@ -122,3 +100,36 @@ function renderAllStores(){
 }//close function
 
 renderAllStores();
+
+/*
+Lab 09 below
+*/
+
+//Display new store
+function handleFormSubmitted(event){
+  event.preventDefault();
+
+  var nameInput = document.getElementById('enterName');
+  var nameValue = nameInput.value;
+
+  var minInput = document.getElementById('enterMinCust');
+  var minValue = minInput.value;
+
+  var maxInput = document.getElementById('enterMaxCust');
+  var maxValue = maxInput.value;
+
+  var avgInput = document.getElementById('enterAvgCookies');
+  var avgValue = avgInput.value;
+
+  var newStore = new Store(nameValue, minValue, maxValue, avgValue);
+
+  newStore.render(event);
+
+  var form = document.getElementById('enterStore');
+  form.reset();
+
+}
+
+// Event listener
+var formElement = document.getElementById('enterStore');
+formElement.addEventListener('submit', handleFormSubmitted);
