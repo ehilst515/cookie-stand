@@ -25,22 +25,22 @@
                     <br>
                     <!-- Minimum customers -->
                     <label for="enterMinCust">Min. Cust.</label>
-                    <input id="enterMinCust" type="text" required>
+                    <input id="enterMinCust" type="number" required>
                     <br>
                     <br>
                     <!-- Maximum customers -->
                     <label for="enterMaxCust">Max. Cust.</label>
-                    <input id="enterMaxCust" type="text" required>
+                    <input id="enterMaxCust" type="number" required>
                     <br>
                     <br>
                     <!-- Avg cookies per hour -->
                     <label for="enterAvgCookies">Avg. Cookies</label>
-                    <input id="enterAvgCookies" type="text" required>
+                    <input id="enterAvgCookies" type="number" required>
                     <br>
                     <br>
                 </fieldset>
                 <button type="reset">Reset</button>
-                <button type="submit">Add Store</button>
+                <button type="submit" onclick="formNumbValidate()">Add Store</button>
             </form>
             <!-- Render below table from js/app.js -->
             <table>
