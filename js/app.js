@@ -4,9 +4,7 @@
 Lab 08 below
 */
 
-
 var hours = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-
 
 // Random gen taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function random(min, max) {
@@ -32,10 +30,10 @@ Store.prototype.setCustomersEachHour = function(){
   } //close for loop
 }; //close proto function
 
+var oneHour = 0;
 // Calculate number of cookies sold at each hour
 Store.prototype.setCookEachHour = function(){
   this.setCustomersEachHour();
-  var oneHour = 0;
   for (var i = 0; i < hours.length; i++) {
     // push to array a random customer at the hour
     oneHour = Math.ceil(this.customersEachHour[i] * this.avgCookieSale);
@@ -51,7 +49,6 @@ Store.prototype.setTotalCookies = function(){
   }
   return cookies;
 };
-
 
 //Set store values with var and new
 var seattleStore = new Store('Seattle', 23, 65, 6.3);
@@ -69,10 +66,9 @@ console.log(parisStore);
 var limaStore = new Store('Lima', 2, 16, 4.6);
 console.log(limaStore);
 
-///
-
-//Rendering
+//Rendering table
 Store.prototype.render = function(){
+
   var cookieTable = document.getElementById('dataTable');
 
   var dataRow = document.createElement('tr');
@@ -87,17 +83,37 @@ Store.prototype.render = function(){
 
     cookieTable.appendChild(dataRow);
   }// close for loop
+
   var totalData = document.createElement('td');
   totalData.textContent = this.setTotalCookies();
   dataRow.appendChild(totalData);
-};// close proto function
+
+  // Hour totals summation
+  // for(i = 0; i < hours.length; i++){
+  //   var hourTotal = 0;
+  //   var hourTotalFoot = document.createElement('td');
+  //   for(var j = 0; j < allStores.length; j++){
+  //     hourTotal = hourTotal + allStores[i].cookiesEachHour[j];
+  //   }
+  //   hourTotalFoot.textContent = hourTotal;
+  //   dataRow.appendChild(hourTotalFoot);
+  // }
+
+  // var totalSumData = document.createElement('td');
+  // var totalSum = 0;
+  // for(i = 0; i < hours.length; i++){
+  //   totalSum = totalSumData + allStores[i].setTotalCookies();
+  // }
+  // totalSumData.textContent = totalSum;
+  // dataRow.appendChild(totalSumData);
+};// close proto function to render table
 
 var allStores = [seattleStore,tokyoStore,dubaiStore, parisStore, limaStore];
 function renderAllStores(){
   for(var i = 0; i < allStores.length; i++){
     allStores[i].render();
   }//close for
-}//close function
+}//close renderall function
 
 renderAllStores();
 
@@ -127,9 +143,20 @@ function handleFormSubmitted(event){
 
   var form = document.getElementById('enterStore');
   form.reset();
-
 }
 
 // Event listener
 var formElement = document.getElementById('enterStore');
 formElement.addEventListener('submit', handleFormSubmitted);
+
+
+function sum(input){
+  var total = 0;
+  for(var i=0; i < hours.length; i++)
+  {
+    total += (input[i]);
+  }
+  return total;
+}
+
+console.log(sum(limaStore.cookiesEachHour));
