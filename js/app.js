@@ -1,9 +1,5 @@
 'use strict';
 
-/*
-Lab 08 below
-*/
-
 var hours = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
 // Random gen taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -66,10 +62,28 @@ console.log(parisStore);
 var limaStore = new Store('Lima', 2, 16, 4.6);
 console.log(limaStore);
 
+var allStores = [seattleStore,tokyoStore,dubaiStore, parisStore, limaStore];
+
+var cookieTable = document.getElementById('dataTable');
+var tableFoot = document.getElementById('totalFoot');
+
+function makeFooterRow(){
+  var totalFooter = document.createElement('tfoot');
+  tableFoot.appendChild(totalFooter);
+  totalFooter.textContent = 'Totals';
+  for(var i = 0; i < hours.length; i++){
+    var total = 0;
+    var totalFoot = document.createElement('td');
+    for( var j = 0; j < allStores.length; j++){
+      total += allStores[j].cookiesEachHour[i];
+    }
+    totalFoot.textContent = total;
+    totalFooter.appendChild(totalFoot);
+  }
+}
+
 //Rendering table
 Store.prototype.render = function(){
-
-  var cookieTable = document.getElementById('dataTable');
 
   var dataRow = document.createElement('tr');
   var nameCell = document.createElement('td');
@@ -88,27 +102,8 @@ Store.prototype.render = function(){
   totalData.textContent = this.setTotalCookies();
   dataRow.appendChild(totalData);
 
-  // Hour totals summation
-  // for(i = 0; i < hours.length; i++){
-  //   var hourTotal = 0;
-  //   var hourTotalFoot = document.createElement('td');
-  //   for(var j = 0; j < allStores.length; j++){
-  //     hourTotal = hourTotal + allStores[i].cookiesEachHour[j];
-  //   }
-  //   hourTotalFoot.textContent = hourTotal;
-  //   dataRow.appendChild(hourTotalFoot);
-  // }
-
-  // var totalSumData = document.createElement('td');
-  // var totalSum = 0;
-  // for(i = 0; i < hours.length; i++){
-  //   totalSum = totalSumData + allStores[i].setTotalCookies();
-  // }
-  // totalSumData.textContent = totalSum;
-  // dataRow.appendChild(totalSumData);
 };// close proto function to render table
 
-var allStores = [seattleStore,tokyoStore,dubaiStore, parisStore, limaStore];
 function renderAllStores(){
   for(var i = 0; i < allStores.length; i++){
     allStores[i].render();
@@ -116,10 +111,7 @@ function renderAllStores(){
 }//close renderall function
 
 renderAllStores();
-
-/*
-Lab 09 below
-*/
+makeFooterRow();
 
 //Display new store
 function handleFormSubmitted(event){
@@ -148,15 +140,3 @@ function handleFormSubmitted(event){
 // Event listener
 var formElement = document.getElementById('enterStore');
 formElement.addEventListener('submit', handleFormSubmitted);
-
-
-function sum(input){
-  var total = 0;
-  for(var i=0; i < hours.length; i++)
-  {
-    total += (input[i]);
-  }
-  return total;
-}
-
-console.log(sum(limaStore.cookiesEachHour));
