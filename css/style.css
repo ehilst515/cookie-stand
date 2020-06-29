@@ -63,6 +63,7 @@ table, th, td{
     border-collapse: collapse;
     border: solid black;
     margin: 0;
+    table-layout: fixed;
 }
 
 th{
@@ -79,6 +80,18 @@ th, td {
   li p{
       margin: 0 !important;
   }
+
 form{
     margin: 40px;
+}
+
+tfoot{
+    border-collapse: collapse;
+    border: solid black;
+    word-wrap:break-word;
+    background-color: white;
+}
+
+tfoot{
+    margin: 500px;
 }
